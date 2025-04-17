@@ -1,11 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Site 4 - Ma bibliothèque</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <nav>
+      <h2>Ma Bibliothèque</h2>
+
+      <ul class="nav-links">
+        <li><a href="#">Livres</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <div>
+        <input
+          type="text"
+          name="bookName"
+          id="inputSearchBook"
+          placeholder="Titre du livre"
+        />
+      </div>
+
+      <div>
+        <button id="btnDateAsc">Date +</button>
+        <button id="btnDateDesc">Date -</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="card">
+        <div class="card-header">
+          <img src="images/The-Lord-of-the-Rings.jpg" alt="Image du livre" />
+        </div>
+        <div class="card-body">
+          <h5 class="card-body__title">The Lord of the Rings</h5>
+          <div class="card-body__infos">
+            <p class="card-body__infos_author">J.R.R. Tolkien</p>
+            <p class="card-body__infos_publish_year">1954</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
