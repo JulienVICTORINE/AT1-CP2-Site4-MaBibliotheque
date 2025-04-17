@@ -5,9 +5,15 @@ const main = document.querySelector("main");
 const btnDatePublishAsc = document.querySelector("#btnDateAsc");
 const btnDatePublishDesc = document.querySelector("#btnDateDesc");
 
+// Filtrer par date
+const inputFilterYear = document.getElementById("filterYear");
+const btnFilterYear = document.getElementById("btnFilterYear");
+
 // Variable pour stocker les livres
 var books = [];
 var sortMethod = "";
+
+var filter = "";
 
 // Requête fetch
 // Je créé ma fonction pour récupérer les livres
@@ -28,27 +34,35 @@ const fetchBooksData = async (search = "the lord of the rings") => {
 // Fonction pour récupérer et afficher tous les livres
 const updateMain = () => {
   main.innerHTML = ""; // je vide le main
-  let filteredBooks = [...books]; // je fais une copie pour permettre de filtrer, trier les livres
+  let copieBooks = [...books]; // je fais une copie pour permettre de filtrer, trier les livres
+
+  // Appliquer le filtre par année
+  // En gros, si par exemple, je saisie l'année 1950, je ne garde que les livres publiés après ou pendant 1950.
+  if (filter) {
+    copieBooks = copieBooks.filter((book) => {
+      return book.first_publish_year && book.first_publish_year >= filter;
+    });
+  }
 
   // On trie les livres filtrés
-  filteredBooks = filteredBooks.sort((a, b) => {
-    if (sortMethod === "dateAsc") {
+  copieBooks = copieBooks.sort((a, b) => {
+    if (sortMethod == "dateAsc") {
       return (b.first_publish_year || 0) - (a.first_publish_year || 0);
-    } else if (sortMethod === "dateDesc") {
+    } else if (sortMethod == "dateDesc") {
       return (a.first_publish_year || 0) - (b.first_publish_year || 0);
     } else {
-      return 0;
+      return 0; // affiche pas les livres
     }
   });
 
   // On afffiche les livres
-  filteredBooks.map((book) => {
+  copieBooks.map((book) => {
     const title = book.title;
     const authorName = book.author_name;
     const anneePublication = book.first_publish_year;
     const imageAPI = book.cover_i;
 
-    // URL de l'image par défaut
+    // URL de l'image
     let imageURL = "";
 
     if (imageAPI) {
@@ -86,7 +100,7 @@ fetchBooksData();
 // Ajout des événements pour les boutons
 
 ///////////////
-// Trier les films par date de publication
+// Trier les livres par date de publication
 //////////////
 btnDatePublishAsc.addEventListener("click", () => {
   sortMethod = "dateAsc";
@@ -95,5 +109,13 @@ btnDatePublishAsc.addEventListener("click", () => {
 
 btnDatePublishDesc.addEventListener("click", () => {
   sortMethod = "dateDesc";
+  updateMain();
+});
+
+///////////////
+// Filtrer les livres par date
+//////////////
+btnFilterYear.addEventListener("click", () => {
+  filter = parseInt(inputFilterYear.value); // je récupère l'année saisie
   updateMain();
 });
