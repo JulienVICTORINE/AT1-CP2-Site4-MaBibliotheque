@@ -26,7 +26,7 @@ const fetchBooksData = async (search = "the lord of the rings") => {
     let url = `https://openlibrary.org/search.json?q=${search}`;
 
     if (!isNaN(search)) {
-      // Si c'est un nombre (année), on filtre aussi sur l'année
+      // Si c'est un nombre (pour ici c'est l'année), on filtre aussi sur l'année
       url += `&first_publish_year=${search}`;
     }
 
