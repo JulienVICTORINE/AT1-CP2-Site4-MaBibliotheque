@@ -23,6 +23,8 @@ var filter = "";
 // Je créé ma fonction pour récupérer les livres
 const fetchBooksData = async (search = "the lord of the rings") => {
   try {
+    main.innerHTML = "<p class='loader'>Chargement...</p>"; // le loader
+
     let url = `https://openlibrary.org/search.json?q=${search}`;
 
     if (!isNaN(search)) {
@@ -37,6 +39,7 @@ const fetchBooksData = async (search = "the lord of the rings") => {
     updateMain();
   } catch (error) {
     console.log(error);
+    main.innerHTML = "<p class='error'>Erreur lors du chargement.</p>";
   }
 };
 
@@ -63,6 +66,12 @@ const updateMain = () => {
       return 0; // affiche pas les livres
     }
   });
+
+  // Vérifier s'il y a des livres
+  if (copieBooks.length === 0) {
+    main.innerHTML = `<p class="no-results">Aucun livre trouvé.</p>`;
+    return;
+  }
 
   // On afffiche les livres
   copieBooks.map((book) => {
@@ -133,8 +142,20 @@ btnFilterYear.addEventListener("click", () => {
 // Input pour rechercher un livre
 /////////////
 btnSearchBook.addEventListener("click", () => {
-  const search = inputBookName.value.trim();
-  if (search !== "") {
-    fetchBooksData(search);
+  const searchValue = inputBookName.value;
+  if (searchValue !== "") {
+    fetchBooksData(searchValue);
+    inputBookName.value = ""; // une fois la recherche lancé, le champ texte se vide
+  }
+});
+
+// test également si on appuie sur "Entrée"
+inputBookName.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    const search = e.target.value.trim();
+    if (search !== "") {
+      fetchBooksData(search);
+      inputBookName.value = ""; // une fois la recherche lancé, le champ texte se vide
+    }
   }
 });
