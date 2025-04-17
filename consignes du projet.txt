@@ -10,6 +10,7 @@ rechercher par titre de film
 v1 - Afficher les données sans l'image (HTML, CSS)
 
 v2 - Afficher les données avec l'image
+afficher une image par défaut s'il n'y a aucune image
 
 v3 - filtrer les données
 
@@ -21,3 +22,5 @@ Consignes :
 En utilisant l'api de openlibrary, afficher une liste de livres que l'on peut filtrer par date et trier soit par date/soit par nombre de pages.
 
 Il faudrait pouvoir lancer une recherche de listes livres dépendant d'un input lorsque j'appuie sur un bouton.
+
+
