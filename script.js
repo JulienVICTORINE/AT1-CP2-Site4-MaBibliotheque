@@ -37,10 +37,10 @@ const updateMain = () => {
   let copieBooks = [...books]; // je fais une copie pour permettre de filtrer, trier les livres
 
   // Appliquer le filtre par année
-  // En gros, si par exemple, je saisie l'année 1950, je ne garde que les livres publiés après ou pendant 1950.
+  // En gros, si par exemple, je saisie l'année 1950, je n'ai que les films de 1950.
   if (filter) {
     copieBooks = copieBooks.filter((book) => {
-      return book.first_publish_year && book.first_publish_year >= filter;
+      return book.first_publish_year && book.first_publish_year == filter;
     });
   }
 
