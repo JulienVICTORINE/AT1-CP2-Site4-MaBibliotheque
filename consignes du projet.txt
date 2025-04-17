@@ -5,7 +5,7 @@ documentation
 "Book Search" = route principale
 récupérer mon tableau de livres
 
-rechercher par titre de film
+rechercher un livre par son titre
 
 v1 - Afficher les données sans l'image (HTML, CSS)
 
@@ -14,10 +14,11 @@ afficher une image par défaut s'il n'y a aucune image
 
 v3 - trier/filtrer les données par date
 
-V4 - à chaque fois que l'on clique sur le bouton recherche, il prend le titre saisie et il le met dans l'url
+V4 - Rechercher un livre
+à chaque fois que l'on clique sur le bouton recherche, il prend le titre saisie et il le met dans l'url
 sa va relancer la requête
 
-v5 - filtrer les données par nombre de pages
+v5 (plus avancé) - filtrer les données par nombre de pages
 
 
 

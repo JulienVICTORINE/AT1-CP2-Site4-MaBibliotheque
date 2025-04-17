@@ -9,6 +9,10 @@ const btnDatePublishDesc = document.querySelector("#btnDateDesc");
 const inputFilterYear = document.getElementById("filterYear");
 const btnFilterYear = document.getElementById("btnFilterYear");
 
+// Rechercher un livre par son titre
+const inputBookName = document.querySelector("#inputBookName");
+const btnSearchBook = document.querySelector("#btnSearchBook");
+
 // Variable pour stocker les livres
 var books = [];
 var sortMethod = "";
@@ -20,11 +24,24 @@ var filter = "";
 const fetchBooksData = async (search = "the lord of the rings") => {
   try {
     const request = await fetch(
-      `https://openlibrary.org/search.json?q=${search}&limit=20`
+      `https://openlibrary.org/search.json?q=${search}`
     );
     const data = await request.json();
     books = data.docs; // c'est dans le docs qu'on récupère les données
     console.log("Livres récupérés :", books);
+    updateMain();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const fetchBooksDataByYear = async (year) => {
+  try {
+    const request = await fetch(
+      `https://openlibrary.org/search.json?first_publish_year=${year}`
+    );
+    const data = await request.json();
+    books = data.docs;
     updateMain();
   } catch (error) {
     console.log(error);
@@ -118,4 +135,20 @@ btnDatePublishDesc.addEventListener("click", () => {
 btnFilterYear.addEventListener("click", () => {
   filter = parseInt(inputFilterYear.value); // je récupère l'année saisie
   updateMain();
+});
+
+//////////////
+// Input pour rechercher un livre
+/////////////
+btnSearchBook.addEventListener("click", () => {
+  const search = inputBookName.value.trim();
+  if (search !== "") {
+    if (!isNaN(search)) {
+      // Si c'est un nombre, alors on cherche par année
+      fetchBookDataByYear(search);
+    } else {
+      // Sinon par cherche par titre
+      fetchBooksData(search);
+    }
+  }
 });
