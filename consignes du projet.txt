@@ -1,0 +1,23 @@
+https://openlibrary.org/dev/docs/api/search
+web service
+documentation 
+
+"Book Search" = route principale
+récupérer mon tableau de livres
+
+rechercher par titre de film
+
+v1 - Afficher les données sans l'image (HTML, CSS)
+
+v2 - Afficher les données avec l'image
+
+v3 - filtrer les données
+
+V4 - à chaque fois que l'on clique sur le bouton recherche, il prend le titre saisie et il le met dans l'url
+
+
+
+Consignes : 
+En utilisant l'api de openlibrary, afficher une liste de livres que l'on peut filtrer par date et trier soit par date/soit par nombre de pages.
+
+Il faudrait pouvoir lancer une recherche de listes livres dépendant d'un input lorsque j'appuie sur un bouton.
