@@ -23,25 +23,17 @@ var filter = "";
 // Je créé ma fonction pour récupérer les livres
 const fetchBooksData = async (search = "the lord of the rings") => {
   try {
-    const request = await fetch(
-      `https://openlibrary.org/search.json?q=${search}`
-    );
+    let url = `https://openlibrary.org/search.json?q=${search}`;
+
+    if (!isNaN(search)) {
+      // Si c'est un nombre (année), on filtre aussi sur l'année
+      url += `&first_publish_year=${search}`;
+    }
+
+    const request = await fetch(url);
     const data = await request.json();
     books = data.docs; // c'est dans le docs qu'on récupère les données
     console.log("Livres récupérés :", books);
-    updateMain();
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const fetchBooksDataByYear = async (year) => {
-  try {
-    const request = await fetch(
-      `https://openlibrary.org/search.json?first_publish_year=${year}`
-    );
-    const data = await request.json();
-    books = data.docs;
     updateMain();
   } catch (error) {
     console.log(error);
@@ -143,12 +135,6 @@ btnFilterYear.addEventListener("click", () => {
 btnSearchBook.addEventListener("click", () => {
   const search = inputBookName.value.trim();
   if (search !== "") {
-    if (!isNaN(search)) {
-      // Si c'est un nombre, alors on cherche par année
-      fetchBookDataByYear(search);
-    } else {
-      // Sinon par cherche par titre
-      fetchBooksData(search);
-    }
+    fetchBooksData(search);
   }
 });
