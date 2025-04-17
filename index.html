@@ -8,52 +8,59 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <nav>
-      <h2>Ma Bibliothèque</h2>
+    <div id="loader">
+      <div class="spinner"></div>
+      <p>Chargement...</p>
+    </div>
 
-      <ul class="nav-links">
-        <li><a href="#">Livres</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-
-    <header>
-      <h1>Open Library</h1>
-      <div>
-        <input
-          type="text"
-          name="bookName"
-          id="inputBookName"
-          placeholder="Rechercher un livre"
-        />
-        <button id="btnSearchBook">Rechercher</button>
-      </div>
-
-      <div>
-        <button id="btnDateAsc">Date +</button>
-        <button id="btnDateDesc">Date -</button>
-      </div>
-
-      <div>
-        <input type="number" id="filterYear" placeholder="Saisir l'année" />
-        <button id="btnFilterYear">Filtrer</button>
-      </div>
-    </header>
-
-    <main>
-      <!-- <div class="card">
-        <div class="card-header">
-          <img src="images/The-Lord-of-the-Rings.jpg" alt="Image du livre" />
+    <div id="content" style="display: none;">
+      <nav>
+        <h2>Ma Bibliothèque</h2>
+  
+        <ul class="nav-links">
+          <li><a href="#">Livres</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+  
+      <header>
+        <h1>Open Library</h1>
+        <div>
+          <input
+            type="text"
+            name="bookName"
+            id="inputBookName"
+            placeholder="Rechercher un livre"
+          />
+          <button id="btnSearchBook">Rechercher</button>
         </div>
-        <div class="card-body">
-          <h5 class="card-body__title">The Lord of the Rings</h5>
-          <div class="card-body__infos">
-            <p class="card-body__infos_author"><span>J.R.R. Tolkien</span></p>
-            <p class="card-body__infos_publish_year"><span>1954</span></p>
+  
+        <div>
+          <button id="btnDateAsc">Date +</button>
+          <button id="btnDateDesc">Date -</button>
+        </div>
+  
+        <div>
+          <input type="number" id="filterYear" placeholder="Saisir l'année" />
+          <button id="btnFilterYear">Filtrer</button>
+        </div>
+      </header>
+  
+      <main>
+        <!-- <div class="card">
+          <div class="card-header">
+            <img src="images/The-Lord-of-the-Rings.jpg" alt="Image du livre" />
           </div>
-        </div>
-      </div> -->
-    </main>
+          <div class="card-body">
+            <h5 class="card-body__title">The Lord of the Rings</h5>
+            <div class="card-body__infos">
+              <p class="card-body__infos_author"><span>J.R.R. Tolkien</span></p>
+              <p class="card-body__infos_publish_year"><span>1954</span></p>
+            </div>
+          </div>
+        </div> -->
+      </main>  
+    </div>
 
     <script src="script.js"></script>
   </body>

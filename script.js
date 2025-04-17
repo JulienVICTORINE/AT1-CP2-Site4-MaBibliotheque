@@ -19,12 +19,16 @@ var sortMethod = "";
 
 var filter = "";
 
+// Chargement
+setTimeout(() => {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("content").style.display = "block";
+}, 2000); // 2 secondes pour un test
+
 // Requête fetch
 // Je créé ma fonction pour récupérer les livres
 const fetchBooksData = async (search = "the lord of the rings") => {
   try {
-    main.innerHTML = "<p class='loader'>Chargement...</p>"; // le loader
-
     let url = `https://openlibrary.org/search.json?q=${search}`;
 
     if (!isNaN(search)) {
@@ -39,7 +43,6 @@ const fetchBooksData = async (search = "the lord of the rings") => {
     updateMain();
   } catch (error) {
     console.log(error);
-    main.innerHTML = "<p class='error'>Erreur lors du chargement.</p>";
   }
 };
 
@@ -49,7 +52,7 @@ const updateMain = () => {
   let copieBooks = [...books]; // je fais une copie pour permettre de filtrer, trier les livres
 
   // Appliquer le filtre par année
-  // En gros, si par exemple, je saisie l'année 1950, je n'ai que les films de 1950.
+  // En gros, si par exemple, je saisie l'année 1950, je n'ai que les films de 1950 et ainsi de suite mais pour une autre date
   if (filter) {
     copieBooks = copieBooks.filter((book) => {
       return book.first_publish_year && book.first_publish_year == filter;
@@ -149,7 +152,7 @@ btnSearchBook.addEventListener("click", () => {
   }
 });
 
-// test également si on appuie sur "Entrée"
+// test également si on appuie sur "Entrée" après avoir saisie le nom du livre
 inputBookName.addEventListener("keyup", (e) => {
   if (e.key === "Enter") {
     const search = e.target.value.trim();

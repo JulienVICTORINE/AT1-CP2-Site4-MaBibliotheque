@@ -125,16 +125,37 @@ main {
   margin-top: 50px;
 }
 
-.loader {
-  text-align: center;
-  font-size: 1.5rem;
-  color: #555;
-  margin-top: 50px;
-}
-
 .error {
   text-align: center;
   font-size: 1.5rem;
   color: red;
   margin-top: 50px;
+}
+
+/* Chargement */
+#loader {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  background: #212121;
+  color: white;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #ccc;
+  border-top: 5px solid #ffcc00;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
