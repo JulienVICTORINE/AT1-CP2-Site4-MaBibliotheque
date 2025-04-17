@@ -137,8 +137,38 @@ btnDatePublishDesc.addEventListener("click", () => {
 // Filtrer les livres par date
 //////////////
 btnFilterYear.addEventListener("click", () => {
-  filter = parseInt(inputFilterYear.value); // je récupère l'année saisie
-  updateMain();
+  const inputValue = inputFilterYear.value.trim(); // je récupère l'année saisie
+
+  if (inputValue == "") {
+    // Si l'input est vide, alors on recharge les livres de base
+    filter = "";
+    fetchBooksData(); // cela recharge "the lord of the rings"
+  } else {
+    // Sinon, on applique le filtre
+    filter = parseInt(inputValue);
+    updateMain();
+  }
+});
+
+// test également si on appuie sur "Entrée" après avoir saisie une année
+inputFilterYear.addEventListener("keyup", (e) => {
+  const inputValue = inputFilterYear.value.trim();
+
+  if (e.key === "Enter") {
+    if (inputValue === "") {
+      filter = "";
+      fetchBooksData(); // recharge tous les livres
+    } else if (!isNaN(inputValue)) {
+      filter = parseInt(inputValue);
+      updateMain();
+    }
+  }
+
+  //si on efface tout (champ vide) même sans appuyer sur la touche "Entrée"
+  if (inputValue === "") {
+    filter = "";
+    fetchBooksData();
+  }
 });
 
 //////////////
