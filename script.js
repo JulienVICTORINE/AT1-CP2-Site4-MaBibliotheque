@@ -20,7 +20,7 @@ var filter = "";
 const fetchBooksData = async (search = "the lord of the rings") => {
   try {
     const request = await fetch(
-      `https://openlibrary.org/search.json?q=${search}`
+      `https://openlibrary.org/search.json?q=${search}&limit=20`
     );
     const data = await request.json();
     books = data.docs; // c'est dans le docs qu'on récupère les données

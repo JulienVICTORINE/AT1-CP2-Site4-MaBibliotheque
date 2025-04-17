@@ -27,3 +27,6 @@ En utilisant l'api de openlibrary, afficher une liste de livres que l'on peut fi
 Il faudrait pouvoir lancer une recherche de listes livres dépendant d'un input lorsque j'appuie sur un bouton.
 
 
+target = l'événement où il a été déclencher
+
+
