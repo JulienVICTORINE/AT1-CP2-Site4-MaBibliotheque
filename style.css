@@ -77,11 +77,9 @@ main {
 
 /* Card */
 .card {
-  width: 400px;
-  border-radius: 15px;
+  width: 300px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   background-color: #f9f9f9;
-  border: 2px solid white;
 
   &:hover {
     transform: scale(1.05);
